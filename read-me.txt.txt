@@ -1,0 +1,21 @@
+Per creare un server locale:
+1) pip install virtualenv
+2) vai nella cartella del progetto -- cd nomeprogetto
+3) creo l' ambiente virtuale 
+virtualenv venv
+4) mi sposto nell ambiente virtuale
+cd venv
+creo la cartella app
+mkdir app
+5) creo il file app.py dentro la cartella app
+touch > app.py
+
+6) vai nella cartella script e installi flask
+
+cd script
+pip install flask
+
+7) crei la flask app in app.py
+la cartella templates e la esegui 
+
+

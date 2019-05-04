@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Richiamare dati con Ajax da un file di testo</title>
+  </head>
+  <body>
+    <button id="ricevi">Ricevi il contenuto del file</button>
+    <p>
+      interrogo l' api del serrver per ottenere una risorsa che si trova all
+      indirizzo /item/piano <br />
+      faccio con js ajax una richiesta GET all indirizzo /item/piano e se è
+      presente stampo yahoo <br />
+      1) creo la risorsa con un post richiesta su postman <br />
+      2) clicco il bottone e se è presento un item piano scrivo yahoooo
+    </p>
+    <br /><br />
+    <div id="contenuto"></div>
+
+    <script>
+      document
+        .getElementById("ricevi")
+        .addEventListener("click", caricaContenuto);
+
+      function caricaContenuto() {
+        var ajax = new XMLHttpRequest();
+        ajax.open("GET", "/item/piano", true);
+        ajax.onload = function() {
+          if (this.status == 200) {
+            document.getElementById("contenuto").innerHTML = "yahoooo";
+          } else if (this.status == 404) {
+            document.getElementById("contenuto").innerHTML =
+              "Risorsa non trovata!";
+          }
+        };
+        ajax.send();
+      }
+
+      // Valori per readyState
+      // 0: richiesta non inizializzata
+      // 1: stabilita connessione con il server
+      // 2: richiesta ricevuta
+      // 3: processo in corso
+      // 4: completata la richiesta.Pronti per la risposta
+
+      // Stati per HTTP
+      // 200: "Successo"
+      // 403: "Accesso negato"
+      // 404: "Risorsa non trovata"
+    </script>
+  </body>
+</html>

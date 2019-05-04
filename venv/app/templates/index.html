@@ -1,0 +1,29 @@
+<html>
+  <head>
+    <script type="text/javascript">
+      // js deve interrogare il server tramite una richiesta all api del server
+      // riceverà dei file json dal server
+      function httpGetAsync(theUrl, callback) {
+        var xmlHttp = new XMLHttpRequest();
+        xmlHttp.onreadystatechange = function() {
+          if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
+            callback(xmlHttp.responseText);
+        };
+        xmlHttp.open("GET", theUrl, true);
+        // manda una richiesta di tipo get al server api
+        // true for asynchronous
+        xmlHttp.send(null);
+      }
+      // se la richiesta asincrona che abbiamo fatto riceve qualcosa dal server ( dovrebbe ricevere un json)
+      //  allora esegue una funzione ( che in questo caso fa il pop up di un json)
+      httpGetAsync("http://127.0.0.1:8000/store", function(response) {
+        document.write(response);
+      });
+    </script>
+  </head>
+  <body>
+    <div id="myElement">
+      Hello, world!
+    </div>
+  </body>
+</html>
